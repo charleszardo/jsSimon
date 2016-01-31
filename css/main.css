@@ -1,0 +1,41 @@
+#green {
+	background: green;
+}
+
+#red {
+	background: red;
+}
+
+#yellow {
+	background: yellow;
+}
+
+#blue {
+	background: blue;
+}
+
+#count {
+	background: #32050C;
+	color: #DC0D29;
+	height: 50px;
+	width: 50px;
+}
+
+#start {
+	background: red;
+}
+
+#strict {
+	background: yellow;
+}
+
+.control {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+}
+
+.button {
+	height: 150px;
+	width: 150px;
+}
