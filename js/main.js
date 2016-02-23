@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var power = false,
+	var power = true,
 		  strict = false,
 			count = 0,
 	    hexDigits = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
@@ -66,12 +66,26 @@ $(document).ready(function() {
 		return keys;
 	}
 	
+	function flash(el, val) {
+		(el).css("background-color", LightenDarkenColor(rgb2hex($(el).css("background-color")), val)); 
+	}
+	
+	function resetBg(el, val) {
+		$(el).css("background-color", val);
+	}
+	
+	function fade(el, val) {
+		$(el).fadeTo( "slow", val );
+	}
+	
 	function playSequence(sequence) {
-		var color;
+		var color,
+		    $currEl;
 		sequence.forEach(function(el) {
 			color = mapping[el];
-			var $currEl = $("#" + color);
-			console.log($currEl);
+			$currEl = $("#" + color);
+			fade($currEl, 0.33);
+			setTimeout(fade($currEl, 1), 1500);
 		})
 	}
 	
