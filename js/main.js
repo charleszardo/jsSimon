@@ -2,6 +2,7 @@ $(document).ready(function() {
 	var power = true,
 		  strict = false,
 			count = 0,
+		  rounds = 0,
 	    hexDigits = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
 			mapping = {
 				1: "green",
@@ -39,7 +40,8 @@ $(document).ready(function() {
 			color = mapping[el];
 			$currEl = $("#" + color);
 			fade($currEl, 0.33);
-			setTimeout(fade($currEl, 1), 1500);
+			setTimeout(function(){}, 1500);
+			fade($currEl, 1);
 		})
 	}
 	
@@ -49,11 +51,13 @@ $(document).ready(function() {
 			  sequence = [],
 			  curr_num;
 				
-		while (play) {
+		while (rounds < 5) {
 			curr_num = options[Math.floor(Math.random()*options.length)];
-			sequence.push(curr_num)
+			sequence.push(curr_num);
+			console.log(sequence);
 			playSequence(sequence);
 			play = false;
+			rounds++;
 		}
 	}
 })
