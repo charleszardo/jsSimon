@@ -70,6 +70,8 @@ $(document).ready(function() {
 		var color;
 		sequence.forEach(function(el) {
 			color = mapping[el];
+			var $currEl = $("#" + color);
+			console.log($currEl);
 		})
 	}
 	
@@ -82,7 +84,7 @@ $(document).ready(function() {
 		while (play) {
 			curr_num = options[Math.floor(Math.random()*options.length)];
 			sequence.push(curr_num)
-			play_sequence(sequence);
+			playSequence(sequence);
 			play = false;
 		}
 	}
