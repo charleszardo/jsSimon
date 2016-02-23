@@ -5,5 +5,10 @@ $(document).ready(function() {
 	
 	$("#power").click(function() {
 		power = !power;
+		alert(power)
 	})
+	
+	function game () {
+		
+	}
 })
