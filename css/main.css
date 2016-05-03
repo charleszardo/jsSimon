@@ -1,17 +1,21 @@
 #green {
 	background: green;
+	border-radius: 100% 0 0 0;
 }
 
 #red {
 	background: red;
+	border-radius: 0 100% 0 0;
 }
 
 #yellow {
 	background: yellow;
+	border-radius: 0 0 100% 0;
 }
 
 #blue {
 	background: blue;
+	border-radius: 0 0 0 100%;
 }
 
 #count {
@@ -33,6 +37,12 @@
 	background: blue;
 }
 
+#game {
+	margin: 0 auto;
+	text-align: center;
+	width: 50%;
+}
+
 .control {
 	height: 50px;
 	width: 50px;
@@ -42,4 +52,17 @@
 .button {
 	height: 150px;
 	width: 150px;
+	display: inline-block;
+	border: 5px solid #111;
+	margin: -4px;
+}
+
+.circle {
+	height: 150px;
+	width: 150px;
+	background: #111;
+	border-radius: 50%;
+	position: absolute;
+	left: 45%;
+	top: 9.5%;
 }
