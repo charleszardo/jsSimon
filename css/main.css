@@ -55,6 +55,7 @@
 	display: inline-block;
 	border: 5px solid #111;
 	margin: -4px;
+	cursor: pointer;
 }
 
 .circle {
