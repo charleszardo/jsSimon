@@ -1,43 +1,43 @@
-#green {
+.shape1 {
 	background: green;
 	border-radius: 100% 0 0 0;
 }
 
-#red {
+.shape2 {
 	background: red;
 	border-radius: 0 100% 0 0;
 }
 
-#yellow {
+.shape3 {
 	background: yellow;
-	border-radius: 0 0 100% 0;
-}
-
-#blue {
-	background: blue;
 	border-radius: 0 0 0 100%;
 }
 
-#count {
+.shape4 {
+	background: blue;
+	border-radius: 0 0 100% 0;
+}
+
+.count {
 	background: #32050C;
 	color: #DC0D29;
 	height: 50px;
 	width: 50px;
 }
 
-#start {
+.start {
 	background: red;
 }
 
-#strict {
+.strict {
 	background: yellow;
 }
 
-#power {
+.power {
 	background: blue;
 }
 
-#game {
+.game {
 	margin: 0 auto;
 	text-align: center;
 	width: 50%;
@@ -50,7 +50,7 @@
 	border-radius: 50%;
 }
 
-.button {
+.pad {
 	height: 250px;
 	width: 250px;
 	display: inline-block;
