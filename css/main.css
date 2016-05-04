@@ -41,6 +41,7 @@
 	margin: 0 auto;
 	text-align: center;
 	width: 50%;
+	position: absolute;
 }
 
 .control {
@@ -50,20 +51,30 @@
 }
 
 .button {
-	height: 150px;
-	width: 150px;
+	height: 250px;
+	width: 250px;
 	display: inline-block;
 	border: 5px solid #111;
 	margin: -4px;
 	cursor: pointer;
 }
 
+.row {
+	width: 600px;
+}
+
 .circle {
-	height: 150px;
-	width: 150px;
+	height: 250px;
+	width: 250px;
 	background: #111;
 	border-radius: 50%;
 	position: absolute;
-	left: 45%;
-	top: 9.5%;
+	left: 175px;
+	top: 128px;
+}
+
+.wrapper {
+	position: relative;
+	margin: 0 auto;
+	width: 700px;
 }
