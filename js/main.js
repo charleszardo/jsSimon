@@ -31,12 +31,10 @@ $(document).ready(function() {
 		return keys;
 	}
 	
-	
-	
 	function playRound(sequence) {
 		var idx = 0,
 				currPad;
-		while (idx < sequence.length - 1) {
+		while (idx < sequence.length) {
 			currPad = sequence[idx];
 			$(".pad").click(function() {
 				console.log(this.id);
@@ -44,6 +42,12 @@ $(document).ready(function() {
 			})
 		}
 	}
+	
+	$(".pad").click(function() {
+		if (inPlay) {
+			
+		}
+	})
 	
 	function game () {
 		var options = nums(),
