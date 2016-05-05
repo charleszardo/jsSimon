@@ -3,6 +3,7 @@ $(document).ready(function() {
 		  strict = false,
 			count = 0,
 		  rounds = 0,
+	    inPlay = false,
 	    hexDigits = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
 			mapping = {
 				1: "green",
@@ -30,13 +31,22 @@ $(document).ready(function() {
 		return keys;
 	}
 	
-	$(".pad").click(function() {
-		console.log(this.id);
-	})
+	
+	
+	function playRound(sequence) {
+		var idx = 0,
+				currPad;
+		while (idx < sequence.length - 1) {
+			currPad = sequence[idx];
+			$(".pad").click(function() {
+				console.log(this.id);
+				idx++
+			})
+		}
+	}
 	
 	function game () {
-		var play = true,
-		    options = nums(),
+		var options = nums(),
 			  sequence = [],
 			  curr_num;
 				
@@ -46,7 +56,11 @@ $(document).ready(function() {
 			// add to seq
 			sequence.push(curr_num);
 			// play seq
+			console.log(sequence);
 			// user input
+			inPlay = true;
+			playRound(sequence);
+			inPlay = false;
 			rounds++;
 		}
 	}
