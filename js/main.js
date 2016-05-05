@@ -11,11 +11,12 @@ $(document).ready(function() {
 				4: "yellow"
 			};
 	
-	$("#power").click(function() {
+	$(".power").click(function() {
 		power = !power;
 	})
 	
-	$("#start").click(function() {
+	$(".start").click(function() {
+		console.log(power);
 		if (power) {
 			game();
 		}
@@ -29,21 +30,9 @@ $(document).ready(function() {
 		return keys;
 	}
 	
-	function fade(el, val) {
-		$(el).fadeTo( "slow", val );
-	}
-	
-	function playSequence(sequence) {
-		var color,
-		    $currEl;
-		sequence.forEach(function(el) {
-			color = mapping[el];
-			$currEl = $("#" + color);
-			fade($currEl, 0.33);
-			setTimeout(function(){}, 1500);
-			fade($currEl, 1);
-		})
-	}
+	$(".pad").click(function() {
+		console.log(this.id);
+	})
 	
 	function game () {
 		var play = true,
@@ -52,11 +41,12 @@ $(document).ready(function() {
 			  curr_num;
 				
 		while (rounds < 5) {
+			// gen new num
 			curr_num = options[Math.floor(Math.random()*options.length)];
+			// add to seq
 			sequence.push(curr_num);
-			console.log(sequence);
-			playSequence(sequence);
-			play = false;
+			// play seq
+			// user input
 			rounds++;
 		}
 	}
