@@ -1,23 +1,24 @@
 $(document).ready(function() {
-	var power = true,
-		  strict = false,
-			count = 0,
-		  rounds = 0,
-	    inPlay = false,
-	    hexDigits = ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
-			mapping = {
-				1: "green",
-				2: "red",
-				3: "blue",
-				4: "yellow"
-			};
+	var game = {
+		power: true,
+		strict: false,
+		count: 0,
+		rounds: 0,
+		inPlay: false,
+    hexDigits: ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
+		mapping: {
+			1: "green",
+			2: "red",
+			3: "blue",
+			4: "yellow"
+		}
+	}
 	
 	$(".power").click(function() {
-		power = !power;
+		game.power = !game.power;
 	})
 	
 	$(".start").click(function() {
-		console.log(power);
 		if (power) {
 			game();
 		}
