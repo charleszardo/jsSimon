@@ -28,22 +28,22 @@
 	z-index: 1;
 }
 
-.shape1 {
+#shape1 {
 	background: green;
 	border-radius: 100% 0 0 0;
 }
 
-.shape2 {
+#shape2 {
 	background: red;
 	border-radius: 0 100% 0 0;
 }
 
-.shape3 {
+#shape3 {
 	background: yellow;
 	border-radius: 0 0 0 100%;
 }
 
-.shape4 {
+#shape4 {
 	background: blue;
 	border-radius: 0 0 100% 0;
 }
