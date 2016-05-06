@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	var game = {
-		power: true,
+		power: false,
 		strict: false,
 		count: 0,
 		rounds: 0,
@@ -16,6 +16,11 @@ $(document).ready(function() {
 	
 	$(".power").click(function() {
 		game.power = !game.power;
+		if (game.power === true) {
+			$(".power").css("opacity", "1");
+		} else {
+			$(".power").css("opacity", "0.6");
+		}
 	})
 	
 	$(".start").click(function() {

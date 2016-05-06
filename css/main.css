@@ -60,6 +60,13 @@
 }
 
 /* controls */
+.control {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	opacity: 0.6;
+}
+
 .count {
 	background: #32050C;
 	color: #DC0D29;
@@ -77,10 +84,4 @@
 
 .power {
 	background: blue;
-}
-
-.control {
-	height: 50px;
-	width: 50px;
-	border-radius: 50%;
 }
