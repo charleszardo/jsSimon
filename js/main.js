@@ -34,29 +34,37 @@ var game = {
 			times -= 1;
 		}
 	},
+	nums: function () {
+		var keys = [];
+		for (var k in this.mapping) {
+			keys.push(Number(k));
+		}
+		return keys;
+	},
 	playSound: function(clip) {
 		var sound = $(".sound"+clip)[0];
 		sound.currentTime = 0;
 		sound.play();
-	}
+	},
+	addToSequence: function () {
+		var options = this.nums(),
+		    nextNum = options[Math.floor(Math.random()*options.length)];
+				
+				this.sequence.push(nextNum);
+	},
 	init: function () {
-		var options = nums(),
-			  sequence = [],
-			  curr_num;
-		
-		while (rounds < 5) {
-			// gen new num
-			curr_num = options[Math.floor(Math.random()*options.length)];
-			// add to seq
-			sequence.push(curr_num);
-			// play seq
-			console.log(sequence);
-			// user input
-			inPlay = true;
-			playRound(sequence);
-			inPlay = false;
-			rounds++;
-		}
+		console.log(this.sequence);
+	  this.addToSequence();
+		console.log(this.sequence);
+		// while (rounds < 5) {
+		// 	// play seq
+		// 	console.log(sequence);
+		// 	// user input
+		// 	inPlay = true;
+		// 	playRound(sequence);
+		// 	inPlay = false;
+		// 	rounds++;
+		// }
 	}
 }
 
@@ -74,14 +82,6 @@ $(".start").click(function() {
 		game();
 	}
 })
-
-function nums () {
-	var keys = [];
-	for (var k in mapping) {
-		keys.push(Number(k));
-	}
-	return keys;
-}
 
 function playRound(sequence) {
 	var idx = 0,
@@ -102,5 +102,5 @@ $(".pad").click(function() {
 })
 
 $(document).ready(function() {
-	
+	game.init();
 })
