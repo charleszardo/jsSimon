@@ -34,6 +34,11 @@ var game = {
 			times -= 1;
 		}
 	},
+	playSound: function(clip) {
+		var sound = $(".sound"+clip)[0];
+		sound.currentTime = 0;
+		sound.play();
+	}
 	init: function () {
 		var options = nums(),
 			  sequence = [],
