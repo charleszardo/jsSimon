@@ -14,6 +14,26 @@ var game = {
 		3: "blue",
 		4: "yellow"
 	},
+	flash: function(el, times, speed, pad) {
+		var that = this;
+		
+		if (times > 0) {
+			that.playSound(pad);
+			element.stop().animate({opacity: '1'}, {
+				duration: 50,
+				complete: function () {
+					element.stop().animate({opacity: '0.6'}, 200);
+				}
+			});
+		}
+		
+		if (times > 0) {
+			setTimeout(function () {
+				that.flash(element, times, speed, pad);
+			}, speed);
+			times -= 1;
+		}
+	},
 	init: function () {
 		var options = nums(),
 			  sequence = [],
