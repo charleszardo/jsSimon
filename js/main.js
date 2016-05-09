@@ -19,17 +19,17 @@ var game = {
 		
 		if (times > 0) {
 			that.playSound(pad);
-			element.stop().animate({opacity: '1'}, {
+			el.stop().animate({opacity: '1'}, {
 				duration: 50,
 				complete: function () {
-					element.stop().animate({opacity: '0.6'}, 200);
+					el.stop().animate({opacity: '0.6'}, 200);
 				}
 			});
 		}
 		
 		if (times > 0) {
 			setTimeout(function () {
-				that.flash(element, times, speed, pad);
+				that.flash(el, times, speed, pad);
 			}, speed);
 			times -= 1;
 		}
