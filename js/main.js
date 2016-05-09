@@ -7,6 +7,7 @@ var game = {
 	handler: false,
 	sequence: [],
 	playSequence: [],
+	shape: "#shape",
   hexDigits: ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
 	mapping: {
 		1: "green",
@@ -52,9 +53,20 @@ var game = {
 				
 				this.sequence.push(nextNum);
 	},
+	playSequence: function () {
+		var that=this;
+		
+		$.each(this.sequence, function(idx, val) {
+			setTimeout(function() {
+				that.flash($(that.shape+val),1,300,val)
+			}, 500 * idx)
+		});
+	},
 	init: function () {
 		console.log(this.sequence);
 	  this.addToSequence();
+		this.addToSequence();
+		this.playSequence();
 		console.log(this.sequence);
 		// while (rounds < 5) {
 		// 	// play seq
