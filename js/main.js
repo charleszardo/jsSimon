@@ -89,6 +89,17 @@ var game = {
 			}, 1000);
 		}
 	},
+	gameOver: function() {
+		var correctPad = this.sequence[this.turn],
+				that = this;
+
+		this.active = false;
+		this.updateScore();
+		
+		setTimeout(function(){
+			that.flash($(that.shape+correctPad), 4, 300, correctPad);
+		}, 500);
+	},
 	updateScore: function() {
 		
 	},
