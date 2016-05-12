@@ -6,7 +6,7 @@ var game = {
 	inPlay: false,
 	handler: false,
 	sequence: [],
-	playSequence: [],
+	currSequence: [],
 	shape: "#shape",
   hexDigits: ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
 	mapping: {
@@ -51,7 +51,9 @@ var game = {
 		var options = this.nums(),
 		    nextNum = options[Math.floor(Math.random()*options.length)];
 				
-				this.sequence.push(nextNum);
+		this.sequence.push(nextNum);
+		
+		this.playRound();
 	},
 	playSequence: function () {
 		var that=this;
@@ -61,6 +63,9 @@ var game = {
 				that.flash($(that.shape+val),1,300,val)
 			}, 500 * idx)
 		});
+	},
+	playRound: function() {
+		
 	},
 	init: function () {
 		console.log(this.sequence);
@@ -94,18 +99,6 @@ $(".start").click(function() {
 		game();
 	}
 })
-
-function playRound(sequence) {
-	var idx = 0,
-			currPad;
-	while (idx < sequence.length) {
-		currPad = sequence[idx];
-		$(".pad").click(function() {
-			console.log(this.id);
-			idx++
-		})
-	}
-}
 
 $(".pad").click(function() {
 	if (inPlay) {
