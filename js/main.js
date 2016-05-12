@@ -64,6 +64,10 @@ var game = {
 			}, 500 * idx)
 		});
 	},
+	playerMove: function(pad) {
+		this.currSequence.push(pad);
+		this.checkSequence(pad);
+	},
 	playRound: function() {
 		
 	},
