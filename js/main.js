@@ -3,6 +3,8 @@ var game = {
 	strict: false,
 	count: 0,
 	rounds: 0,
+	turn: 0,
+	level: 0,
 	inPlay: false,
 	handler: false,
 	sequence: [],
@@ -67,6 +69,28 @@ var game = {
 	playerMove: function(pad) {
 		this.currSequence.push(pad);
 		this.checkSequence(pad);
+	},
+	checkSequence: function(pad) {
+		var that = this;
+		
+		if (pad !== this.sequence[this.turn]) {
+			this.gameOver();
+		} else {
+			this.updateScore();
+			this.turn++;
+		}
+		
+		if (this.turn === this.sequence.length) {
+			this.level++;
+			//update level
+			this.active = false;
+			setTimeout(function(){
+				that.newLevel();
+			}, 1000);
+		}
+	},
+	updateScore: function() {
+		
 	},
 	playRound: function() {
 		
