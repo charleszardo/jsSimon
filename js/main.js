@@ -7,6 +7,12 @@ var game = {
 	inGame: false,
 	sequence: [],
 	currSequence: [],
+	mapping: {
+		1: "green",
+		2: "red",
+		3: "blue",
+		4: "yellow"
+	},
 	
 	
 	
@@ -19,12 +25,9 @@ var game = {
 	
 	shape: "#shape",
   hexDigits: ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
-	mapping: {
-		1: "green",
-		2: "red",
-		3: "blue",
-		4: "yellow"
-	},
+	
+	
+	
 	
 	flash: function(el, times, speed, pad) {
 		var that = this;
@@ -57,7 +60,9 @@ var game = {
 		
 		$.each(this.sequence, function(idx, val) {
 			setTimeout(function() {
-				that.flash($(that.shape+val),1,300,val)
+				console.log(val);
+				console.log(that.shape);
+				that.flash($(that.shape+val),1,300,val);
 			}, 500 * idx)
 		});
 	},
@@ -80,17 +85,14 @@ var game = {
 		var that = this;
 		
 		$(".pad").click(function () {
-			console.log(that.playerTurn);
 			if (that.playerTurn) {
-				console.log(this);
+				var val = this.id.charAt(5);
+				that.flash($(that.shape+val),1,300,val);
 			}
 		})
 		
 		this.handler = true;
 	},
-	
-	
-	
 	nums: function () {
 		var keys = [];
 		for (var k in this.mapping) {
@@ -98,6 +100,11 @@ var game = {
 		}
 		return keys;
 	},
+	
+	
+	
+	
+	
 	playSound: function(clip) {
 		var sound = $(".sound"+clip)[0];
 		sound.currentTime = 0;
