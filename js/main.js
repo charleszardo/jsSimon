@@ -108,9 +108,11 @@ var game = {
 		this.newGame();
 	},
 	newGame: function () {
-	  this.addToSequence();
+	  this.computerTurn();
+	},
+	computerTurn: function () {
+		this.addToSequence();
 		this.playSequence();
-		console.log(this.sequence);
 	}
 }
 
