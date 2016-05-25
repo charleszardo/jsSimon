@@ -7,9 +7,10 @@ var game = {
 	level: 0,
 	opacityHigh: '1',
 	opacityLow: '0.6',
-	inPlay: false,
+	playerTurn: false,
 	handler: false,
 	inGame: false,
+	handlers: false,
 	sequence: [],
 	currSequence: [],
 	shape: "#shape",
@@ -105,6 +106,10 @@ var game = {
 		
 	},
 	init: function () {
+		if (!this.handler) {
+			this.initPadHandler();
+		}
+		
 		this.newGame();
 	},
 	newGame: function () {
@@ -113,14 +118,28 @@ var game = {
 	computerTurn: function () {
 		this.addToSequence();
 		this.playSequence();
+		this.playerTurn = true;
+	},
+	initPadHandler: function () {
+		var that = this;
+		console.log('initialized');
+		
+		$(".pad").click(function () {
+			console.log(that.playerTurn);
+			if (that.playerTurn) {
+				console.log(this);
+			}
+		})
+		
+		this.handlers = true;
 	}
 }
 
-$(".pad").click(function() {
-	if (inPlay) {
-		
-	}
-})
+// $(".pad").click(function() {
+// 	if (true) {
+//
+// 	}
+// })
 
 $(document).ready(function() {
 	$(".power").click(function() {
