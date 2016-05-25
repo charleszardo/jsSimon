@@ -1,5 +1,5 @@
 var game = {
-	power: false,
+	power: true,
 	strict: false,
 	count: 0,
 	rounds: 0,
@@ -7,6 +7,7 @@ var game = {
 	level: 0,
 	inPlay: false,
 	handler: false,
+	inGame: false,
 	sequence: [],
 	currSequence: [],
 	shape: "#shape",
@@ -103,41 +104,13 @@ var game = {
 	updateScore: function() {
 		
 	},
-	playRound: function() {
-		
-	},
 	init: function () {
-		console.log(this.sequence);
-	  this.addToSequence();
-		this.addToSequence();
-		this.playSequence();
-		console.log(this.sequence);
-		// while (rounds < 5) {
-		// 	// play seq
-		// 	console.log(sequence);
-		// 	// user input
-		// 	inPlay = true;
-		// 	playRound(sequence);
-		// 	inPlay = false;
-		// 	rounds++;
-		// }
+		this.newGame();
+	},
+	newGame: function () {
+		console.log('h');
 	}
 }
-
-$(".power").click(function() {
-	game.power = !game.power;
-	if (game.power === true) {
-		$(".power").css("opacity", "1");
-	} else {
-		$(".power").css("opacity", "0.6");
-	}
-})
-
-$(".start").click(function() {
-	if (power) {
-		game();
-	}
-})
 
 $(".pad").click(function() {
 	if (inPlay) {
@@ -146,5 +119,19 @@ $(".pad").click(function() {
 })
 
 $(document).ready(function() {
-	game.init();
+	$(".power").click(function() {
+		game.power = !game.power;
+		if (game.power === true) {
+			$(".power").css("opacity", "1");
+		} else {
+			$(".power").css("opacity", "0.6");
+		}
+	})
+	
+	$(".start").click(function() {
+		if (game.power && !game.inGame) {
+			$(this).css("opacity", "1");
+			game.init();
+		}
+	})
 })
