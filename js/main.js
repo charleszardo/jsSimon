@@ -5,6 +5,8 @@ var game = {
 	rounds: 0,
 	turn: 0,
 	level: 0,
+	opacityHigh: '1',
+	opacityLow: '0.6',
 	inPlay: false,
 	handler: false,
 	inGame: false,
@@ -23,10 +25,10 @@ var game = {
 		
 		if (times > 0) {
 			that.playSound(pad);
-			el.stop().animate({opacity: '1'}, {
+			el.stop().animate({opacity: this.opacityHigh}, {
 				duration: 50,
 				complete: function () {
-					el.stop().animate({opacity: '0.6'}, 200);
+					el.stop().animate({opacity: that.opacityLow}, 200);
 				}
 			});
 		}
@@ -55,8 +57,6 @@ var game = {
 		    nextNum = options[Math.floor(Math.random()*options.length)];
 				
 		this.sequence.push(nextNum);
-		
-		this.playRound();
 	},
 	playSequence: function () {
 		var that=this;
@@ -108,7 +108,9 @@ var game = {
 		this.newGame();
 	},
 	newGame: function () {
-		console.log('h');
+	  this.addToSequence();
+		this.playSequence();
+		console.log(this.sequence);
 	}
 }
 
@@ -122,15 +124,15 @@ $(document).ready(function() {
 	$(".power").click(function() {
 		game.power = !game.power;
 		if (game.power === true) {
-			$(".power").css("opacity", "1");
+			$(".power").css("opacity", game.opacityHigh);
 		} else {
-			$(".power").css("opacity", "0.6");
+			$(".power").css("opacity", game.opacityLow);
 		}
 	})
 	
 	$(".start").click(function() {
 		if (game.power && !game.inGame) {
-			$(this).css("opacity", "1");
+			$(this).css("opacity", game.opacityHigh);
 			game.init();
 		}
 	})
