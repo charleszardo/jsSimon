@@ -76,7 +76,6 @@ var game = {
 	  this.computerTurn();
 	},
 	computerTurn: function () {
-		this.currIdx = 0;
 		this.addToSequence();
 		this.playSequence();
 		this.playerTurn = true;
@@ -114,7 +113,14 @@ var game = {
 		return keys;
 	},
 	roundOver: function() {
+		var that=this;
+		this.playerTurn = false;
+		this.updateScore();
+		this.currIdx = 0;
 		
+		setTimeout(function() {
+			that.computerTurn();
+		}, 1000)
 	},
 	
 	
