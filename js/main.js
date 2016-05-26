@@ -74,7 +74,11 @@ var game = {
 	},
 	newGame: function () {
 		this.inGame = true;
-	  this.computerTurn();
+		this.playerTurn = false;
+		this.sequence = [];
+		this.currIdx = 0;
+		this.score = 0;
+		this.computerTurn();
 	},
 	computerTurn: function () {
 		this.playerTurn = false;
@@ -85,19 +89,15 @@ var game = {
 	initPadHandler: function () {
 		var that = this;
 		
+		this.handler = true;
+		
 		$(".pad").click(function () {
 			if (that.playerTurn) {
 				var val = this.id.charAt(5);
 				that.flash($(that.shape+val),1,300,val);
 				that.handlePlayerInput(val, that);
-				
-				
-				console.log(val);
-				console.log(that.sequence[that.currIdx]);
 			}
 		})
-		
-		this.handler = true;
 	},
 	nums: function () {
 		var keys = [];
@@ -133,6 +133,22 @@ var game = {
 			that.roundOver();
 		}
 	},
+	gameOver: function() {
+		var correctPad = this.sequence[this.currIdx],
+				that = this;
+		
+				console.log("GAME OVER!!");
+		this.inGame = false;
+		this.playerTurn = false;
+		$(".start").css("opacity", game.opacityLow);
+
+		setTimeout(function(){
+			that.flash($(that.shape+correctPad), 4, 300, correctPad);
+		}, 500);
+	},
+	updateScore: function() {
+		$(".score").html(this.score);
+	},
 	
 	
 	
@@ -159,21 +175,9 @@ var game = {
 				that.newLevel();
 			}, 1000);
 		}
-	},
-	gameOver: function() {
-		// var correctPad = this.sequence[this.turn],
-// 				that = this;
-//
-// 		this.active = false;
-// 		this.updateScore();
-//
-// 		setTimeout(function(){
-// 			that.flash($(that.shape+correctPad), 4, 300, correctPad);
-// 		}, 500);
-	},
-	updateScore: function() {
-		$(".score").html(this.score);
 	}
+	
+	
 }
 
 $(document).ready(function() {
