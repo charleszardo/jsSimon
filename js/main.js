@@ -60,8 +60,6 @@ var game = {
 		
 		$.each(this.sequence, function(idx, val) {
 			setTimeout(function() {
-				console.log(val);
-				console.log(that.shape);
 				that.flash($(that.shape+val),1,300,val);
 			}, 500 * idx)
 		});
@@ -74,12 +72,14 @@ var game = {
 		this.newGame();
 	},
 	newGame: function () {
+		this.inGame = true;
 	  this.computerTurn();
 	},
 	computerTurn: function () {
 		this.addToSequence();
 		this.playSequence();
 		this.playerTurn = true;
+		console.log(this.sequence);
 	},
 	initPadHandler: function () {
 		var that = this;
