@@ -89,17 +89,9 @@ var game = {
 			if (that.playerTurn) {
 				var val = this.id.charAt(5);
 				that.flash($(that.shape+val),1,300,val);
-				if (Number(val) === that.sequence[that.currIdx]) {
-					console.log('correct');
-					that.currIdx++;
-				} else {
-					console.log('wrong');
-					that.gameOver();
-				}
+				that.handlePlayerInput(val, that);
 				
-				if (that.currIdx >= that.sequence.length) {
-					that.roundOver();
-				}
+				
 				console.log(val);
 				console.log(that.sequence[that.currIdx]);
 			}
@@ -125,7 +117,22 @@ var game = {
 			that.computerTurn();
 		}, 1000)
 	},
-	
+	handlePlayerInput: function(_val, scope) {
+		var val = Number(_val),
+		   that = scope;
+		
+		if (val === that.sequence[that.currIdx]) {
+			console.log('correct');
+			that.currIdx++;
+		} else {
+			console.log('wrong');
+			that.gameOver();
+		}
+		
+		if (that.currIdx >= that.sequence.length) {
+			that.roundOver();
+		}
+	},
 	
 	
 	
