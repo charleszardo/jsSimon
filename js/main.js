@@ -137,9 +137,11 @@ var game = {
 		var correctPad = this.sequence[this.currIdx],
 				that = this;
 		
-				console.log("GAME OVER!!");
+		console.log("GAME OVER!!");
 		this.inGame = false;
 		this.playerTurn = false;
+		this.score = 0;
+		this.updateScore();
 		$(".start").css("opacity", game.opacityLow);
 
 		setTimeout(function(){
@@ -149,35 +151,11 @@ var game = {
 	updateScore: function() {
 		$(".score").html(this.score);
 	},
-	
-	
-	
 	playSound: function(clip) {
 		var sound = $(".sound"+clip)[0];
 		sound.currentTime = 0;
 		sound.play();
-	},
-	checkSequence: function(pad) {
-		var that = this;
-		
-		if (pad !== this.sequence[this.turn]) {
-			this.gameOver();
-		} else {
-			this.updateScore();
-			this.turn++;
-		}
-		
-		if (this.turn === this.sequence.length) {
-			this.level++;
-			//update level
-			this.active = false;
-			setTimeout(function(){
-				that.newLevel();
-			}, 1000);
-		}
 	}
-	
-	
 }
 
 $(document).ready(function() {
