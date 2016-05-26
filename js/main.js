@@ -6,7 +6,7 @@ var game = {
 	handler: false,
 	inGame: false,
 	sequence: [],
-	currSequence: [],
+	currIdx: 0,
 	mapping: {
 		1: "green",
 		2: "red",
@@ -76,10 +76,10 @@ var game = {
 	  this.computerTurn();
 	},
 	computerTurn: function () {
+		this.currIdx = 0;
 		this.addToSequence();
 		this.playSequence();
 		this.playerTurn = true;
-		console.log(this.sequence);
 	},
 	initPadHandler: function () {
 		var that = this;
@@ -88,6 +88,19 @@ var game = {
 			if (that.playerTurn) {
 				var val = this.id.charAt(5);
 				that.flash($(that.shape+val),1,300,val);
+				if (Number(val) === that.sequence[that.currIdx]) {
+					console.log('correct');
+					that.currIdx++;
+				} else {
+					console.log('wrong');
+					that.gameOver();
+				}
+				
+				if (that.currIdx >= that.sequence.length) {
+					that.roundOver();
+				}
+				console.log(val);
+				console.log(that.sequence[that.currIdx]);
 			}
 		})
 		
@@ -100,7 +113,9 @@ var game = {
 		}
 		return keys;
 	},
-	
+	roundOver: function() {
+		
+	},
 	
 	
 	
@@ -109,10 +124,6 @@ var game = {
 		var sound = $(".sound"+clip)[0];
 		sound.currentTime = 0;
 		sound.play();
-	},
-	playerMove: function(pad) {
-		this.currSequence.push(pad);
-		this.checkSequence(pad);
 	},
 	checkSequence: function(pad) {
 		var that = this;
@@ -134,15 +145,15 @@ var game = {
 		}
 	},
 	gameOver: function() {
-		var correctPad = this.sequence[this.turn],
-				that = this;
-
-		this.active = false;
-		this.updateScore();
-		
-		setTimeout(function(){
-			that.flash($(that.shape+correctPad), 4, 300, correctPad);
-		}, 500);
+		// var correctPad = this.sequence[this.turn],
+// 				that = this;
+//
+// 		this.active = false;
+// 		this.updateScore();
+//
+// 		setTimeout(function(){
+// 			that.flash($(that.shape+correctPad), 4, 300, correctPad);
+// 		}, 500);
 	},
 	updateScore: function() {
 		
