@@ -7,6 +7,7 @@ var game = {
 	inGame: false,
 	sequence: [],
 	currIdx: 0,
+	score: 0,
 	mapping: {
 		1: "green",
 		2: "red",
@@ -76,6 +77,7 @@ var game = {
 	  this.computerTurn();
 	},
 	computerTurn: function () {
+		this.playerTurn = false;
 		this.addToSequence();
 		this.playSequence();
 		this.playerTurn = true;
@@ -115,8 +117,9 @@ var game = {
 	roundOver: function() {
 		var that=this;
 		this.playerTurn = false;
-		this.updateScore();
 		this.currIdx = 0;
+		this.score++;
+		this.updateScore();
 		
 		setTimeout(function() {
 			that.computerTurn();
@@ -162,7 +165,7 @@ var game = {
 // 		}, 500);
 	},
 	updateScore: function() {
-		
+		$(".score").html(this.score);
 	}
 }
 
