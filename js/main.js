@@ -14,22 +14,8 @@ var game = {
 		3: "blue",
 		4: "yellow"
 	},
-	
-	
-	
-	
-	strict: false,
-	count: 0,
-	rounds: 0,
-	turn: 0,
-	level: 0,
-	
 	shape: "#shape",
-  hexDigits: ["0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"],
-	
-	
-	
-	
+	// strict: false,
 	flash: function(el, times, speed, pad) {
 		var that = this;
 		
