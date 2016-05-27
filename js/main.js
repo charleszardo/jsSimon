@@ -105,13 +105,11 @@ var game = {
 		   that = scope;
 		
 		if (val === that.sequence[that.currIdx]) {
-			console.log('correct');
 			that.currIdx++;
 			if (that.currIdx >= that.sequence.length) {
 				that.roundOver();
 			}
 		} else {
-			console.log('wrong');
 			that.gameOver();
 		}
 	},
@@ -119,12 +117,9 @@ var game = {
 		var correctPad = this.sequence[this.currIdx],
 				that = this;
 		
-		console.log("GAME OVER!!");
 		this.updateHighScoreInDb(this.score);
 		this.inGame = false;
-		
 		this.reset();
-		this.toggleScoreDisplay();
 		$("button.start").css("opacity", game.opacityLow);
 
 		setTimeout(function(){
@@ -142,7 +137,6 @@ var game = {
 		this.updateHighScoreDisplay();
 	},
 	updateScore: function() {
-		console.log(this.score);
 		$(".score").html(this.score);
 	},
 	updateHighScoreDisplay: function() {
@@ -171,13 +165,13 @@ var game = {
 		$("button.power").css("opacity", game.opacityHigh);
 		this.power = true;
 		this.reset();
-		this.toggleScoreDisplay();
 	},
 	reset: function() {
 		this.playerTurn = false;
 		this.sequence = [];
 		this.currIdx = 0;
 		this.score = 0;
+		this.toggleScoreDisplay();
 	}
 }
 
