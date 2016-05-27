@@ -1,5 +1,6 @@
 body {
 	background-color: #000;
+	font-family: sans-serif;
 }
 
 button:focus {
@@ -129,4 +130,19 @@ label {
 	top: 98px;
 	font-size: 48px;
 	opacity: 0.6;
+}
+
+.high-score-container {
+	position: absolute;
+	top: 600px;
+	left: 275px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 48px;
+	line-height:20px;
+	color: #FFF;
+}
+
+.high-score-container p {
+	font-size: 24px;
 }
