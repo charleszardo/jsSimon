@@ -107,13 +107,12 @@ var game = {
 		if (val === that.sequence[that.currIdx]) {
 			console.log('correct');
 			that.currIdx++;
+			if (that.currIdx >= that.sequence.length) {
+				that.roundOver();
+			}
 		} else {
 			console.log('wrong');
 			that.gameOver();
-		}
-		
-		if (that.currIdx >= that.sequence.length) {
-			that.roundOver();
 		}
 	},
 	gameOver: function() {
@@ -123,8 +122,9 @@ var game = {
 		console.log("GAME OVER!!");
 		this.updateHighScoreInDb(this.score);
 		this.inGame = false;
+		
 		this.reset();
-		this.updateScore();
+		this.toggleScoreDisplay();
 		$("button.start").css("opacity", game.opacityLow);
 
 		setTimeout(function(){
@@ -142,6 +142,7 @@ var game = {
 		this.updateHighScoreDisplay();
 	},
 	updateScore: function() {
+		console.log(this.score);
 		$(".score").html(this.score);
 	},
 	updateHighScoreDisplay: function() {
