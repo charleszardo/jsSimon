@@ -125,6 +125,7 @@ var game = {
 				that = this;
 		
 		console.log("GAME OVER!!");
+		this.updateHighScoreInDb(this.score);
 		this.inGame = false;
 		this.playerTurn = false;
 		this.score = 0;
@@ -135,10 +136,20 @@ var game = {
 			that.flash($(that.shape+correctPad), 4, 300, correctPad);
 		}, 500);
 	},
+	updateHighScoreInDb: function(score) {
+		if (score > this.highScore) {
+			database.ref('high-score').set({
+				score: score
+			});
+		}
+		
+		this.highScore = score;
+		this.updateHighScoreDisplay();
+	},
 	updateScore: function() {
 		$(".score").html(this.score);
 	},
-	updateHighScore: function() {
+	updateHighScoreDisplay: function() {
 		$(".high-score").html(this.highScore);
 	},
 	playSound: function(clip) {
@@ -151,7 +162,7 @@ var game = {
 $(document).ready(function() {
 	database.ref('high-score').once('value').then(function(snapshot){
 		game.highScore = snapshot.val().score;
-		game.updateHighScore();
+		game.updateHighScoreDisplay();
 	})
 	
 	$(".power").click(function() {
