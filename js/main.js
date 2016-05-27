@@ -164,16 +164,16 @@ $(document).ready(function() {
 		game.updateHighScoreDisplay();
 	})
 	
-	$(".power").click(function() {
+	$("button.power").click(function() {
 		game.power = !game.power;
 		if (game.power === true) {
-			$(".power").css("opacity", game.opacityHigh);
+			$("button.power").css("opacity", game.opacityHigh);
 		} else {
-			$(".power").css("opacity", game.opacityLow);
+			$("button.power").css("opacity", game.opacityLow);
 		}
 	})
 	
-	$(".start").click(function() {
+	$("button.start").click(function() {
 		if (game.power && !game.inGame) {
 			$(this).css("opacity", game.opacityHigh);
 			$(".score").html(game.score);
