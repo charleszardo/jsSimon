@@ -157,6 +157,7 @@ $(document).ready(function() {
 	$(".start").click(function() {
 		if (game.power && !game.inGame) {
 			$(this).css("opacity", game.opacityHigh);
+			$(".score").html(game.score);
 			game.init();
 		}
 	})

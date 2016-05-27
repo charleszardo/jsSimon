@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<script src="js/jquery-2.2.0.min.js"></script>
 	<script src="js/main.js"></script>
@@ -20,7 +21,11 @@
 	          <source src="sounds/ogg/sounds_02.ogg" type="audio/ogg"/>
 	        </audio>
 				</div>
-			<div class="circle"></div>
+			<div class="circle">
+				<div class="score-container">
+					<p class="score">--</p>
+				</div>
+			</div>
 				<div class="pad" id="shape3">
 					<audio preload="auto" class="sound3" data-pad="3">
 	          <source src="sounds/mp3/sounds_03.mp3" type="audio/mpeg"/>
@@ -34,9 +39,7 @@
 	        </audio>
 				</div>
 		</div>
-		
 	</div>
-	<div class="score">0</div>
 	<div class="control start">START</div>
 	<div class="control strict"></div>
 	<div class="control power">POWER</div>
