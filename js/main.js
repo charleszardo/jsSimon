@@ -155,6 +155,25 @@ var game = {
 		var sound = $(".sound"+clip)[0];
 		sound.currentTime = 0;
 		sound.play();
+	},
+	toggleScoreDisplay: function() {
+		if (this.power) {
+			$(".score").html("--");
+		} else {
+			$(".score").html("");
+		}
+	},
+	powerOff: function() {
+		this.power = false;
+		this.playerTurn = false;
+		this.handler = false;
+		this.inGame = false;
+		this.sequence = [];
+		this.currIdx = 0;
+	  this.score = 0;
+		
+		this.updateScore();
+		this.toggleScoreDisplay();
 	}
 }
 
@@ -166,10 +185,11 @@ $(document).ready(function() {
 	
 	$("button.power").click(function() {
 		game.power = !game.power;
-		if (game.power === true) {
+		if (game.power) {
 			$("button.power").css("opacity", game.opacityHigh);
 		} else {
 			$("button.power").css("opacity", game.opacityLow);
+			game.powerOff();
 		}
 	})
 	
