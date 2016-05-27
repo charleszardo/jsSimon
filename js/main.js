@@ -138,6 +138,9 @@ var game = {
 	updateScore: function() {
 		$(".score").html(this.score);
 	},
+	updateHighScore: function() {
+		$(".high-score").html(this.highScore);
+	},
 	playSound: function(clip) {
 		var sound = $(".sound"+clip)[0];
 		sound.currentTime = 0;
@@ -148,6 +151,7 @@ var game = {
 $(document).ready(function() {
 	database.ref('high-score').once('value').then(function(snapshot){
 		game.highScore = snapshot.val().score;
+		game.updateHighScore();
 	})
 	
 	$(".power").click(function() {
