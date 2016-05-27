@@ -75,7 +75,7 @@ button:focus {
 	position: absolute;
 	height: 50px;
 	width: 50px;
-	top: 140px;
+	top: 150px;
 	border-radius: 50%;
 	opacity: 0.6;
 }
@@ -100,16 +100,25 @@ button:focus {
 }
 
 .start {
-	background: red;
-	left: 70px;
-}
-
-.strict {
-	background: yellow;
+	left: 65px;
 }
 
 .power {
+	left: 135px;
+}
+
+button.start {
+	background: red;
+}
+
+button.power {
 	background: blue;
 	opacity: 1;
-	left: 130px;
+}
+
+label {
+	position: absolute;
+	top: 130px;
+	background: transparent;
+	color: #FFF;
 }
