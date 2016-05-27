@@ -168,7 +168,6 @@ var game = {
 		$("button.start").css("opacity", game.opacityLow);
 		this.power = false;
 		this.playerTurn = false;
-		this.handler = false;
 		this.inGame = false;
 		this.sequence = [];
 		this.currIdx = 0;
