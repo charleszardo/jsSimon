@@ -16,7 +16,6 @@ var game = {
 		4: "yellow"
 	},
 	shape: "#shape",
-	// strict: false,
 	flash: function(el, times, speed, pad) {
 		var that = this;
 		
