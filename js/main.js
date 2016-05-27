@@ -8,6 +8,7 @@ var game = {
 	sequence: [],
 	currIdx: 0,
 	score: 0,
+	highScore: 0,
 	mapping: {
 		1: "green",
 		2: "red",
@@ -145,6 +146,10 @@ var game = {
 }
 
 $(document).ready(function() {
+	database.ref('high-score').once('value').then(function(snapshot){
+		game.highScore = snapshot.val().score;
+	})
+	
 	$(".power").click(function() {
 		game.power = !game.power;
 		if (game.power === true) {
