@@ -1,5 +1,5 @@
 var game = {
-	power: true,
+	power: false,
 	opacityHigh: '1',
 	opacityLow: '0.6',
 	playerTurn: false,
@@ -129,7 +129,7 @@ var game = {
 		this.playerTurn = false;
 		this.score = 0;
 		this.updateScore();
-		$(".start").css("opacity", game.opacityLow);
+		$("button.start").css("opacity", game.opacityLow);
 
 		setTimeout(function(){
 			that.flash($(that.shape+correctPad), 4, 300, correctPad);
@@ -164,6 +164,8 @@ var game = {
 		}
 	},
 	powerOff: function() {
+		$("button.power").css("opacity", game.opacityLow);
+		$("button.start").css("opacity", game.opacityLow);
 		this.power = false;
 		this.playerTurn = false;
 		this.handler = false;
@@ -171,8 +173,11 @@ var game = {
 		this.sequence = [];
 		this.currIdx = 0;
 	  this.score = 0;
-		
-		this.updateScore();
+		this.toggleScoreDisplay();
+	},
+	powerOn: function() {
+		$("button.power").css("opacity", game.opacityHigh);
+		this.power = true;
 		this.toggleScoreDisplay();
 	}
 }
@@ -186,9 +191,8 @@ $(document).ready(function() {
 	$("button.power").click(function() {
 		game.power = !game.power;
 		if (game.power) {
-			$("button.power").css("opacity", game.opacityHigh);
+			game.powerOn();
 		} else {
-			$("button.power").css("opacity", game.opacityLow);
 			game.powerOff();
 		}
 	})
