@@ -1,3 +1,4 @@
+/* global */
 body {
 	background-color: #000;
 	font-family: sans-serif;
@@ -41,22 +42,22 @@ button:focus {
 }
 
 #shape1 {
-	background: green;
+	background: #00dd00;
 	border-radius: 100% 0 0 0;
 }
 
 #shape2 {
-	background: red;
+	background: #dd0000;
 	border-radius: 0 100% 0 0;
 }
 
 #shape3 {
-	background: yellow;
+	background: #ffff00;
 	border-radius: 0 0 0 100%;
 }
 
 #shape4 {
-	background: blue;
+	background: #0000ff;
 	border-radius: 0 0 100% 0;
 }
 
@@ -109,11 +110,11 @@ button:focus {
 }
 
 button.start {
-	background: red;
+	background:  #dd0000;
 }
 
 button.power {
-	background: blue;
+	background: #0000ff;
 	opacity: 0.6;
 }
 
@@ -126,7 +127,7 @@ label {
 
 .power-indicator {
 	left: 195px;
-	color: red;
+	color:  #DD0000;
 	top: 98px;
 	font-size: 48px;
 	opacity: 0.6;
