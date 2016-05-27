@@ -1,3 +1,7 @@
+body {
+	background-color: #000;
+}
+
 /* game */
 .wrapper {
 	position: relative;
@@ -6,10 +10,12 @@
 }
 
 .game {
+	top: 70px;
 	position: absolute;
 	width: 700px;
 	height: 700px;
 	text-align: center;
+	background-color: #000;
 }
 
 .row {
