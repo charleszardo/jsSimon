@@ -2,6 +2,11 @@ body {
 	background-color: #000;
 }
 
+button:focus {
+	outline:0;
+	cursor: pointer;
+}
+
 /* game */
 .wrapper {
 	position: relative;
@@ -83,6 +88,7 @@ body {
 	top: 40px;
 	left: 85px;
 	position: absolute;
+	border: 2px solid #555;
 }
 
 .score {
@@ -90,6 +96,7 @@ body {
 	margin: 0 auto;
 	margin-top: 17px;
 	font-family: 'Orbitron', sans-serif;
+	
 }
 
 .start {
