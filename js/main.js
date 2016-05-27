@@ -8,7 +8,6 @@ var game = {
 	sequence: [],
 	currIdx: 0,
 	score: 0,
-	highScore: 0,
 	mapping: {
 		1: "green",
 		2: "red",
@@ -127,20 +126,25 @@ var game = {
 		}, 500);
 	},
 	updateHighScoreInDb: function(score) {
-		if (score > this.highScore) {
-			database.ref('high-score').set({
-				score: score
-			});
-		}
+		var that = this,
+		    highScore;
 		
-		this.highScore = score;
-		this.updateHighScoreDisplay();
+		database.ref('high-score').once('value').then(function(snapshot){
+			highScore = snapshot.val().score;
+			if (score > highScore) {
+				database.ref('high-score').set({
+					score: score
+				});
+				
+				that.updateHighScoreDisplay(score);
+			}
+		})
 	},
 	updateScore: function() {
 		$(".score").html(this.score);
 	},
-	updateHighScoreDisplay: function() {
-		$(".high-score").html(this.highScore);
+	updateHighScoreDisplay: function(highScore) {
+		$(".high-score").html(highScore);
 	},
 	playSound: function(clip) {
 		var sound = $(".sound"+clip)[0];
@@ -177,8 +181,8 @@ var game = {
 
 $(document).ready(function() {
 	database.ref('high-score').once('value').then(function(snapshot){
-		game.highScore = snapshot.val().score;
-		game.updateHighScoreDisplay();
+		var highScore = snapshot.val().score;
+		game.updateHighScoreDisplay(highScore);
 	})
 	
 	$("button.power").click(function() {
