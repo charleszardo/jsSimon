@@ -60,10 +60,7 @@ var game = {
 	},
 	newGame: function () {
 		this.inGame = true;
-		this.playerTurn = false;
-		this.sequence = [];
-		this.currIdx = 0;
-		this.score = 0;
+		this.reset();
 		this.computerTurn();
 	},
 	computerTurn: function () {
@@ -126,8 +123,7 @@ var game = {
 		console.log("GAME OVER!!");
 		this.updateHighScoreInDb(this.score);
 		this.inGame = false;
-		this.playerTurn = false;
-		this.score = 0;
+		this.reset();
 		this.updateScore();
 		$("button.start").css("opacity", game.opacityLow);
 
@@ -167,17 +163,20 @@ var game = {
 		$("button.power").css("opacity", game.opacityLow);
 		$("button.start").css("opacity", game.opacityLow);
 		this.power = false;
-		this.playerTurn = false;
 		this.inGame = false;
-		this.sequence = [];
-		this.currIdx = 0;
-	  this.score = 0;
 		this.toggleScoreDisplay();
 	},
 	powerOn: function() {
 		$("button.power").css("opacity", game.opacityHigh);
 		this.power = true;
+		this.reset();
 		this.toggleScoreDisplay();
+	},
+	reset: function() {
+		this.playerTurn = false;
+		this.sequence = [];
+		this.currIdx = 0;
+		this.score = 0;
 	}
 }
 
