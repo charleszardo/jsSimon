@@ -67,8 +67,10 @@ body {
 
 /* controls */
 .control {
+	position: absolute;
 	height: 50px;
 	width: 50px;
+	top: 140px;
 	border-radius: 50%;
 	opacity: 0.6;
 }
@@ -92,6 +94,7 @@ body {
 
 .start {
 	background: red;
+	left: 70px;
 }
 
 .strict {
@@ -101,4 +104,5 @@ body {
 .power {
 	background: blue;
 	opacity: 1;
+	left: 130px;
 }
