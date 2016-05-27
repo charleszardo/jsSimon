@@ -189,9 +189,12 @@ $(document).ready(function() {
 	$("button.power").click(function() {
 		game.power = !game.power;
 		if (game.power) {
+			$(".power-indicator").css("opacity", game.opacityHigh);
 			game.powerOn();
 		} else {
+			$(".power-indicator").css("opacity", game.opacityLow);
 			game.powerOff();
+			
 		}
 	})
 	
