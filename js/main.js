@@ -18,7 +18,7 @@ var game = {
 	flash: function(el, times, speed, pad) {
 		var that = this;
 		
-		if (times > 0) {
+		if (times > 0 && this.power) {
 			that.playSound(pad);
 			el.stop().animate({opacity: this.opacityHigh}, {
 				duration: 50,
