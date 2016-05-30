@@ -60,6 +60,7 @@ var game = {
 	newGame: function () {
 		this.inGame = true;
 		this.reset();
+		this.updateScore();
 		this.computerTurn();
 	},
 	computerTurn: function () {
@@ -119,6 +120,7 @@ var game = {
 		this.updateHighScoreInDb(this.score);
 		this.inGame = false;
 		this.reset();
+		this.toggleScoreDisplay();
 		$("button.start").css("opacity", game.opacityLow);
 
 		setTimeout(function(){
@@ -169,13 +171,13 @@ var game = {
 		$("button.power").css("opacity", game.opacityHigh);
 		this.power = true;
 		this.reset();
+		this.toggleScoreDisplay();
 	},
 	reset: function() {
 		this.playerTurn = false;
 		this.sequence = [];
 		this.currIdx = 0;
 		this.score = 0;
-		this.toggleScoreDisplay();
 	}
 }
 
@@ -200,7 +202,6 @@ $(document).ready(function() {
 	$("button.start").click(function() {
 		if (game.power && !game.inGame) {
 			$(this).css("opacity", game.opacityHigh);
-			$(".score").html(game.score);
 			game.init();
 		}
 	})
