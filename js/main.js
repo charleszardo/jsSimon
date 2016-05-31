@@ -24,8 +24,9 @@ var game = {
 			el.stop().animate({opacity: this.opacityHigh}, {
 				duration: 50,
 				complete: function () {
-					that.flashCount++;
-					el.stop().animate({opacity: that.opacityLow}, 200);
+					el.stop().animate({opacity: that.opacityLow}, 
+						                {duration: 200,
+														 complete: that.increaseAndCheckFlashCount() });
 				}
 			});
 		}
@@ -35,6 +36,13 @@ var game = {
 				that.flash(el, times, speed, pad);
 			}, speed);
 			times -= 1;
+		}
+	},
+	increaseAndCheckFlashCount: function () {
+		this.flashCount++;
+		
+		if (this.flashCount === this.score + 1) {
+			this.playerTurn = true;
 		}
 	},
 	addToSequence: function () {
@@ -73,14 +81,9 @@ var game = {
 	},
 	initPadHandler: function () {
 		var that = this;
-		
 		this.handler = true;
 		
 		$(".pad").click(function () {
-			if (that.playbackCount === that.score + 1) {
-				that.playerTurn = true;
-			}
-			
 			if (that.playerTurn) {
 				var val = this.id.charAt(5);
 				that.flash($(that.shape+val),1,300,val);
