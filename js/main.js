@@ -8,7 +8,7 @@ var game = {
 	sequence: [],
 	currIdx: 0,
 	score: 0,
-	playbackCount: 0,
+	flashCount: 0,
 	mapping: {
 		1: "green",
 		2: "red",
@@ -24,7 +24,7 @@ var game = {
 			el.stop().animate({opacity: this.opacityHigh}, {
 				duration: 50,
 				complete: function () {
-					that.playbackCount++;
+					that.flashCount++;
 					el.stop().animate({opacity: that.opacityLow}, 200);
 				}
 			});
@@ -45,13 +45,13 @@ var game = {
 	},
 	playSequence: function () {
 		var that=this;
-		this.playbackCount = 0;
-		this.playerTurn = false;
+		this.flashCount = 0;
+		
 		$(this.sequence).each(function(idx, val) {
 			setTimeout(function() {
 				that.flash($(that.shape+val),1,300,val);
 			}, 500 * idx)
-		}).promise().done(this.togglePlayerTurn.call(that));
+		});
 	},
 	init: function () {
 		if (!this.handler) {
@@ -70,13 +70,6 @@ var game = {
 		this.playerTurn = false;
 		this.addToSequence();
 		this.playSequence();
-		// this.playerTurn = true;
-	},
-	togglePlayerTurn: function () {
-		// console.log(this.playerTurn);
-		// console.log('stop');
-		// this.playerTurn = !this.playerTurn;
-		// console.log(this.playerTurn);
 	},
 	initPadHandler: function () {
 		var that = this;
